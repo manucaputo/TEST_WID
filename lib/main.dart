@@ -18,6 +18,7 @@ class MyApp extends StatelessWidget {
       date: DateTime.now(),
     ),
   ];
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -33,7 +34,9 @@ class MyApp extends StatelessWidget {
                 width: double.infinity,
                 child: Card(
                   color: Colors.blue,
-                  child: Text('Chart!'),
+                  child: Text(
+                    'Chart!',
+                  ),
                   elevation: 5,
                 ),
               ),
@@ -46,19 +49,30 @@ class MyApp extends StatelessWidget {
                             EdgeInsets.symmetric(vertical: 10, horizontal: 15),
                         decoration: BoxDecoration(
                             border: Border.all(
-                          color: Colors.black,
+                          color: Colors.purple,
                           width: 2,
-                        )
-                        ),
+                        )),
                         padding: EdgeInsets.all(10),
                         child: Text(
                           tx.amount.toString(),
-                        )
-                    ),
+                          style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            fontSize: 20,
+                            color: Colors.purple,
+                          ),
+                        )),
                     Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
                       children: <Widget>[
-                        Text(tx.title),
-                        Text(tx.date.toString()),
+                        Text(
+                          tx.title,
+                          style: TextStyle(
+                              fontSize: 16, fontWeight: FontWeight.bold),
+                        ),
+                        Text(
+                          tx.date.toString(),
+                          style: TextStyle(color: Colors.grey),
+                        ),
                       ],
                     ),
                   ]));
