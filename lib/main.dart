@@ -22,28 +22,50 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
-        appBar: AppBar(
-          title: Text('Flutter App'),
-        ),
-        body: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: <Widget>[
-            Container(
-              width: double.infinity,
-              child: Card(
-                color: Colors.blue,
-                child: Text('Chart!'),
-                elevation: 5,
+          appBar: AppBar(
+            title: Text('Flutter App'),
+          ),
+          body: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: <Widget>[
+              Container(
+                width: double.infinity,
+                child: Card(
+                  color: Colors.blue,
+                  child: Text('Chart!'),
+                  elevation: 5,
+                ),
               ),
-            ),
-            Card(
-              color: Colors.red,
-              child: Text('List of TX !'),
-            ),
-          ],
-        ),
-      ),
+              Column(
+                children: transactions.map((tx) {
+                  return Card(
+                      child: Row(children: <Widget>[
+                    Container(
+                        margin:
+                            EdgeInsets.symmetric(vertical: 10, horizontal: 15),
+                        decoration: BoxDecoration(
+                            border: Border.all(
+                          color: Colors.black,
+                          width: 2,
+                        )
+                        ),
+                        padding: EdgeInsets.all(10),
+                        child: Text(
+                          tx.amount.toString(),
+                        )
+                    ),
+                    Column(
+                      children: <Widget>[
+                        Text(tx.title),
+                        Text(tx.date.toString()),
+                      ],
+                    ),
+                  ]));
+                }).toList(),
+              )
+            ],
+          )),
     );
   }
 }
