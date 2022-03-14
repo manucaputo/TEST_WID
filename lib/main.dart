@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 import './Transaction.dart';
 
 void main() => runApp(MyApp());
@@ -27,7 +28,7 @@ class MyApp extends StatelessWidget {
             title: Text('Flutter App'),
           ),
           body: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            //mainAxisAlignment: MainAxisAlignment.spaceAround,
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: <Widget>[
               Container(
@@ -38,6 +39,28 @@ class MyApp extends StatelessWidget {
                     'Chart!',
                   ),
                   elevation: 5,
+                ),
+              ),
+              Card(
+                elevation: 5,
+                child: Container(
+                  padding: EdgeInsets.all(10),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.end,
+                    children: <Widget>[
+                      TextField(
+                        decoration: InputDecoration(labelText: 'Title'),
+                      ),
+                      TextField(
+                        decoration: InputDecoration(labelText: 'Amount'),
+                      ),
+                      FlatButton(
+                        onPressed: () {},
+                        child: Text('Add Transaction'),
+                        textColor: Colors.purple,
+                      ),
+                    ],
+                  ),
                 ),
               ),
               Column(
@@ -54,7 +77,7 @@ class MyApp extends StatelessWidget {
                         )),
                         padding: EdgeInsets.all(10),
                         child: Text(
-                          tx.amount.toString(),
+                          '\$ ${tx.amount}',
                           style: TextStyle(
                             fontWeight: FontWeight.bold,
                             fontSize: 20,
@@ -70,7 +93,8 @@ class MyApp extends StatelessWidget {
                               fontSize: 16, fontWeight: FontWeight.bold),
                         ),
                         Text(
-                          tx.date.toString(),
+                          DateFormat('dd/MM/yyyy').format(tx.date),
+                          //DateFormat.yMMMd().format(tx.date),
                           style: TextStyle(color: Colors.grey),
                         ),
                       ],
