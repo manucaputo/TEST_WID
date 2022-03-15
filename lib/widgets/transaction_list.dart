@@ -2,25 +2,26 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:test_widgets/models/transaction.dart';
 
-
 class TransactionList extends StatelessWidget {
   final List<Transaction> transactions;
   TransactionList(this.transactions);
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: transactions.map((tx) {
-        return Card(
-            child: Row(children: <Widget>[
+    return Container(
+      height: 300,
+      child: SingleChildScrollView(
+        child: Column(
+          children: transactions.map((tx) {
+            return Card(
+                child: Row(children: <Widget>[
               Container(
-                  margin:
-                  EdgeInsets.symmetric(vertical: 10, horizontal: 15),
+                  margin: EdgeInsets.symmetric(vertical: 10, horizontal: 15),
                   decoration: BoxDecoration(
                       border: Border.all(
-                        color: Colors.purple,
-                        width: 2,
-                      )),
+                    color: Colors.purple,
+                    width: 2,
+                  )),
                   padding: EdgeInsets.all(10),
                   child: Text(
                     '\$ ${tx.amount}',
@@ -35,8 +36,7 @@ class TransactionList extends StatelessWidget {
                 children: <Widget>[
                   Text(
                     tx.title,
-                    style: TextStyle(
-                        fontSize: 16, fontWeight: FontWeight.bold),
+                    style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
                   ),
                   Text(
                     DateFormat('dd/MM/yyyy').format(tx.date),
@@ -46,7 +46,9 @@ class TransactionList extends StatelessWidget {
                 ],
               ),
             ]));
-      }).toList(),
+          }).toList(),
+        ),
+      ),
     );
   }
 }
