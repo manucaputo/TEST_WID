@@ -37,9 +37,7 @@ class NewTransaction extends StatelessWidget {
                 //print(titleController.text);
 
                 addTx(
-                    titleController.text,
-                    double.parse(amountController.text)
-                );
+                    titleController.text, double.parse(amountController.text));
               },
               child: Text('Add Transaction'),
               textColor: Colors.purple,
