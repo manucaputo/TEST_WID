@@ -7,6 +7,19 @@ class NewTransaction extends StatelessWidget {
 
   NewTransaction(this.addTx);
 
+  void submitData() {
+    final enteredTitle = titleController.text;
+    final enteredAmount = double.parse(amountController.text);
+
+    if (enteredTitle.isEmpty || enteredAmount <= 0) {
+      return;
+    }
+    addTx(
+      enteredTitle,
+      enteredAmount,
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Card(
@@ -29,16 +42,12 @@ class NewTransaction extends StatelessWidget {
               decoration: InputDecoration(labelText: 'Amount'),
               //onChanged: (value) => amountInput = value,
               controller: amountController,
+              keyboardType: TextInputType.numberWithOptions(decimal: true),
+              onSubmitted: (_) =>
+                  submitData, // "_" i add an argument but I don't use it
             ),
             FlatButton(
-              onPressed: () {
-                // print(titleInput);
-                // print(amountInput);
-                //print(titleController.text);
-
-                addTx(
-                    titleController.text, double.parse(amountController.text));
-              },
+              onPressed: submitData,
               child: Text('Add Transaction'),
               textColor: Colors.purple,
             ),
