@@ -13,6 +13,7 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
+
   // late String titleInput;
   //final titleController = TextEditingController();
   // final amountController = TextEditingController();
@@ -54,17 +55,31 @@ class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-
-        title: 'Personnal expenses ',
+        title: 'Personnal expenses',
         theme: ThemeData(
           primarySwatch: Colors.purple,
           accentColor: Colors.amber,
+          fontFamily: 'QuickSand',
+          textTheme: ThemeData.light().textTheme.copyWith(
+                  headline6: TextStyle(
+                fontFamily: 'OpenSans',
+                fontSize: 18,
+                fontWeight: FontWeight.bold,
+              )),
+          appBarTheme: AppBarTheme(
+            textTheme: ThemeData.light().textTheme.copyWith(
+                    headline6: TextStyle(
+                  fontFamily: 'OpenSans',
+                  fontSize: 20,
+                  fontWeight: FontWeight.bold,
+                )),
+          ),
         ),
-
         home: Scaffold(
-
           appBar: AppBar(
-            title: Text('Personnal expenses'),
+            title: Text(
+              'Personnal expenses',
+            ),
             actions: <Widget>[
               IconButton(
                 icon: Icon(Icons.add),
@@ -72,7 +87,6 @@ class _MyAppState extends State<MyApp> {
               )
             ],
           ),
-
           body: SingleChildScrollView(
             //MediaQuery methods in use
             child: Column(
