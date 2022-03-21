@@ -90,7 +90,6 @@ class _MyAppState extends State<MyApp> {
           Icons.add,
         ),
       ),
-    )
-    );
+    ));
   }
 }
