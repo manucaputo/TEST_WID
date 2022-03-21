@@ -41,7 +41,11 @@ class _MyAppState extends State<MyApp> {
     showModalBottomSheet(
         context: ctx,
         builder: (_) {
-          return NewTransaction(_addNewTransaction);
+          return GestureDetector(
+              onTap: (){},
+              child: NewTransaction(_addNewTransaction),
+            behavior: HitTestBehavior.opaque,
+          );
         });
   }
 
@@ -86,6 +90,7 @@ class _MyAppState extends State<MyApp> {
           Icons.add,
         ),
       ),
-    ));
+    )
+    );
   }
 }
