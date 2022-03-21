@@ -3,7 +3,7 @@ import 'package:test_widgets/widgets/new_transaction.dart';
 import 'package:test_widgets/widgets/transaction_list.dart';
 import './models/transaction.dart';
 
-void main() => runApp(MyApp());
+void main() => runApp(MaterialApp(home: MyApp()));
 
 class MyApp extends StatefulWidget {
   @override
@@ -42,8 +42,8 @@ class _MyAppState extends State<MyApp> {
         context: ctx,
         builder: (_) {
           return GestureDetector(
-              onTap: (){},
-              child: NewTransaction(_addNewTransaction),
+            onTap: () {},
+            child: NewTransaction(_addNewTransaction),
             behavior: HitTestBehavior.opaque,
           );
         });
