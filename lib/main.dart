@@ -19,6 +19,8 @@ class _MyAppState extends State<MyApp> {
   // final amountController = TextEditingController();
 
   final List<Transaction> _userTransactions = [
+    /*
+
     Transaction(
         id: 't1', title: 'New Shoes', amount: 69.99, date: DateTime.now()),
     Transaction(
@@ -26,6 +28,8 @@ class _MyAppState extends State<MyApp> {
         title: 'Weekly Groceries',
         amount: 16.53,
         date: DateTime.now())
+
+     */
   ];
 
   void _addNewTransaction(String txTitle, double txAmount) {
