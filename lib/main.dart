@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:test_widgets/widgets/new_transaction.dart';
 import 'package:test_widgets/widgets/transaction_list.dart';
 import './models/transaction.dart';
+import './widgets/chart.dart';
 
 void main() => runApp(MaterialApp(
       home: MyApp(),
@@ -13,7 +14,6 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-
   // late String titleInput;
   //final titleController = TextEditingController();
   // final amountController = TextEditingController();
@@ -31,6 +31,14 @@ class _MyAppState extends State<MyApp> {
 
      */
   ];
+
+  List<Transaction> get _recentTransacations {
+    return _userTransactions.where((tx) {
+      return tx.date.isAfter(
+        DateTime.now().subtract(Duration(days: 7)),
+      );
+    }).toList();
+  }
 
   void _addNewTransaction(String txTitle, double txAmount) {
     final newTx = Transaction(
@@ -107,6 +115,7 @@ class _MyAppState extends State<MyApp> {
                     elevation: 5,
                   ),
                 ),
+                Chart(this._recentTransacations),
                 TransactionList(_userTransactions),
               ],
             ),
