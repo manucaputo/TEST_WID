@@ -64,6 +64,12 @@ class _MyAppState extends State<MyApp> {
         });
   }
 
+  void _deleteTransaction(String id) {
+    setState(() {
+      _userTransactions.removeWhere((tx) => tx.id == id);
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -71,12 +77,16 @@ class _MyAppState extends State<MyApp> {
         theme: ThemeData(
           primarySwatch: Colors.purple,
           accentColor: Colors.amber,
+          errorColor: Colors.red,
           fontFamily: 'QuickSand',
           textTheme: ThemeData.light().textTheme.copyWith(
-                  headline6: TextStyle(
+              headline6: TextStyle(
                 fontFamily: 'OpenSans',
                 fontSize: 18,
                 fontWeight: FontWeight.bold,
+              ),
+              button: TextStyle(
+                color: Colors.white,
               )),
           appBarTheme: AppBarTheme(
             textTheme: ThemeData.light().textTheme.copyWith(
@@ -108,7 +118,7 @@ class _MyAppState extends State<MyApp> {
                 Container(
                   width: double.infinity,
                   child: Card(
-                    color: Colors.blue,
+                    color: Colors.purple,
                     child: Text(
                       'Chart!',
                     ),
@@ -116,7 +126,7 @@ class _MyAppState extends State<MyApp> {
                   ),
                 ),
                 Chart(this._recentTransacations),
-                TransactionList(_userTransactions),
+                TransactionList(_userTransactions, _deleteTransaction),
               ],
             ),
           ),

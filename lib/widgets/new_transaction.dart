@@ -1,3 +1,4 @@
+import 'dart:ui';
 import 'package:flutter/material.dart';
 
 class NewTransaction extends StatefulWidget {
@@ -54,10 +55,28 @@ class _NewTransactionState extends State<NewTransaction> {
               onSubmitted: (_) =>
                   submitData, // "_" i add an argument but I don't use it
             ),
-            FlatButton(
+            /*
+
+            Container(
+              height: 70,
+              child: Row(
+                children: [
+                  Text('No Date Chosen!'),
+                  FlatButton(
+                    textColor: Colors.purple,
+                      onPressed: () {},
+                      child: Text('Choose Date', style: TextStyle(fontWeight: FontWeight.bold,),)
+                  ),
+                ],
+              ),
+            ),
+
+             */
+            RaisedButton(
               onPressed: submitData,
               child: Text('Add Transaction'),
-              textColor: Colors.purple,
+              color: Colors.purple,
+              textColor: Colors.white,
             ),
           ],
         ),
